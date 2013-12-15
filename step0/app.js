@@ -2,6 +2,7 @@ var messages = [{author: 'Roseanne', text: 'chatting away'},
                  {author: 'Zassmin', text: 'chatting, too'}];
 
 
-var chats = new ChatMessages(messages);
+var chats = new ChatMessages(messages);  
+var chatView = new ChatMessagesView({collection: chats}); 
 
-var chatView = new ChatMessagesView({collection: books});                
+$('.chat-messages-wrapper').append(chatView.render().$el);

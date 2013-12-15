@@ -2,27 +2,17 @@ var ChatMessagesView = Backbone.View.extend({
 
   tagName: 'div',
 
-  className: 'chats',
+  className: 'chat-message',
 
   render: function() {
-
-    // Save this into a variable so we can use it in callback function later
-    var self = this;
-
-    // Iterate through each model in the collection
-    this.collection.each(function (book) {
-
-      // Create the DOM for the book img and link
-      var chatDiv = $('<div class="chat"></div>');
-      var chatAuthor = $('<a>').attr('href', book.get('url'));
-      var bookCover = $('<img>').attr('src', book.get('thumbnail'));
-      bookLink.append(bookCover);
-      bookDiv.append(bookLink);
-
-      // Append the DOM to this view's element
-      self.$el.append(bookDiv);
-    });
-
+    // Compile the template
+    var template = Handlebars.compile($("#chat-messages-template").html());
+    // Render the template with the current collection data
+    var rendered = template({messages: this.collection.toJSON()});
+    // Append the rendered HTML to the current view's element
+    this.$el.append(rendered);
+    
     return this;
   }
 });
+

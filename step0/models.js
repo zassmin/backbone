@@ -1,6 +1,5 @@
 $(document).ready(function() {
-  var chat = new ChatMessage({author: 'pamela', text: 'this is the shit!', time: (new Date()).getTime()});
-  console.log(chat.getPurified());
+  
 });
 
 var ChatMessage = Backbone.Model.extend({
