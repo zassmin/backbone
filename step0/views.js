@@ -48,7 +48,7 @@ var ChatFormView = Backbone.View.extend({
     e.preventDefault();
     var text = this.$('input').val();
     if (text) {
-      this.collection.create({ text: text});
+      this.collection.create({ author: 'Zassmin & Roseanne', text: text});
       this.$('input').val('');
     }
   },
