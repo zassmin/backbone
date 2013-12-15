@@ -7,10 +7,15 @@ var ChatMessage = Backbone.Model.extend({
     author: 'Unknown',
     text: '',
     time: (new Date()).getTime()
-  }, 
+  },
+  initialize: function() {
+    this.getPurified();
+  },
   getPurified: function() {
     if (/shit/.test(this.get('text'))) {
-      return this.get('text').replace(/shit/, '****')
+      var pure = this.get('text').replace(/shit/, '****')
+      this.set('text', pure);  
+      return pure;
     } else {
       return this.get('text');
     }
