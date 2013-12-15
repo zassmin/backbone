@@ -3,6 +3,9 @@ var messages = [{author: 'Roseanne', text: 'chatting away'},
 
 
 var chats = new ChatMessages(messages);  
-var chatView = new ChatMessagesView({collection: chats}); 
+var chatView = new ChatMessagesView({collection: chats});
+var chatFormView = new ChatFormView({collection: chats}); 
 
 $('.chat-messages-wrapper').append(chatView.render().$el);
+
+$('.chat-form-wrapper').append(chatFormView.render().$el);
