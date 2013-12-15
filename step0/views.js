@@ -17,6 +17,7 @@ var ChatMessagesView = Backbone.View.extend({
     return this;
   }, 
   initialize: function() {
+    this.listenTo(this.collection, 'reset', this.render);
     this.listenTo(this.collection, 'add', this.render);
   }
 });
@@ -39,16 +40,22 @@ var ChatFormView = Backbone.View.extend({
   },
 
   events: {
-   'click button': 'addNewMessage'
+   'click .form-submit': 'addNewMessage',
+   'click .form-refresh' : 'refreshMessages'
   },
   addNewMessage: function(e) {
     // prevent page from refreshing when form is submitted
     e.preventDefault();
     var text = this.$('input').val();
     if (text) {
-      this.collection.add({ text: text});
+      this.collection.create({ text: text});
       this.$('input').val('');
     }
+  },
+  refreshMessages: function(e) {
+    // prevent page from refreshing when form is refreshed
+    e.preventDefault();
+    chats.fetch();
   }
 });
 

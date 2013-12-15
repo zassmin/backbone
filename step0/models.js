@@ -26,5 +26,6 @@ var ChatMessages = Backbone.Collection.extend({
     model: ChatMessage,
     comparator: function(model) {
       return model.get('time');
-    }
+    },
+    url: 'http://backchat-backend.appspot.com/messages'
 });
